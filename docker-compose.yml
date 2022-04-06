@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  dev-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: nest
+      POSTGRES_USER: devuser
+      POSTGRES_PASSWORD: devpass
+    volumes:
+      - nest_data:/var/lib/postgres
+    ports:
+      - 5434:5432
+    networks:
+      - nestnet
+volumes:
+  nest_data:
+networks:
+  nestnet:
