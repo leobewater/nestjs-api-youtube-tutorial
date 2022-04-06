@@ -28,6 +28,9 @@ describe('App e2e', () => {
     // clean db for each test
     prisma = app.get(PrismaService);
     await prisma.cleanDb();
+
+    // set base API url
+    pactum.request.setBaseUrl('http://localhost:3333');
   });
 
   afterAll(() => {
@@ -44,9 +47,10 @@ describe('App e2e', () => {
 
         return pactum
           .spec()
-          .post('http://localhost:3333/auth/signup')
+          .post('/auth/signup')
           .withBody(dto)
           .expectStatus(201);
+        // .inspect();
       });
     });
 
