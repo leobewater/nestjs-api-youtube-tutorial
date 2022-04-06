@@ -6,9 +6,10 @@ import { JwtGuard } from 'src/auth/guard';
 @UseGuards(JwtGuard)
 @Controller('users')
 export class UserController {
-  // GET /users/me
+  // Route - GET /users/me
   @Get('me')
-  getMe(@GetUser() user: User) {
+  getMe(@GetUser() user: User, @GetUser('email') email: string) {
+    console.log(email);
     return user;
   }
 }
