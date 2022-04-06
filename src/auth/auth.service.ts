@@ -31,7 +31,7 @@ export class AuthService {
       // check for unique email error
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
-          throw new ForbiddenException('Credentials token');
+          throw new ForbiddenException('Credentials taken');
         }
       }
 
