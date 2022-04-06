@@ -12,7 +12,20 @@ services:
       - 5434:5432
     networks:
       - nestnet
+  test-db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: nest_test
+      POSTGRES_USER: devuser
+      POSTGRES_PASSWORD: devpass
+    volumes:
+      - nest_test:/var/lib/postgres
+    ports:
+      - 5435:5432
+    networks:
+      - nestnet
 volumes:
   nest_data:
+  nest_test:
 networks:
   nestnet:
